@@ -1,0 +1,22 @@
+name: 'Litmus'
+description: 'GitHub Action for test WebDAV with Litmus WebDAV Test Server Suite'
+inputs:
+  url:  # id of input
+    description: 'URI of WebDAV Server you want to test'
+    required: true
+  webdav-user:
+    description: 'username of user allowed to access at WebDAV Server'
+    required: true
+  webdav-password:
+    description: 'password of user allowed to access at WebDAV Server'
+    required: true
+
+outputs:
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.url }}
+    - ${{ inputs.webdav-user }}
+    - ${{ inputs.webdav-password }}
